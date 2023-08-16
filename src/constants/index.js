@@ -13,6 +13,7 @@ import {
   nativecamp,
   itreb,
   upwork,
+  helloworld,
   resta,
   travelblog,
   photography,
@@ -90,11 +91,23 @@ const technologies = [
 
 const experiences = [
   {
+    title: "Front-end Tutor",
+    company_name: "Hello World",
+    icon: helloworld,
+    iconBg: "#092846",
+    date: "August 16 - Present",
+    points: [
+      "Conducted one-on-one lessons with a focus on individual needs.",
+      "Created environment fosters confident, active student involvement through inquiry and expression.",
+      "Focusing on ongoing student input and innovative methods drive continuous improvement for an enriching educational impact",
+    ],
+  },
+  {
     title: "English Tutor",
     company_name: "NativeCamp",
     icon: nativecamp,
     iconBg: "#092846",
-    date: "September 2021 - Present",
+    date: "September 2021 - July 2023",
     points: [
       "Presented lessons both on a one-to-one basis and to groups holding up to 4 students.",
       "Stayed knowledgeable and respectful of cultural differences within the classroom.",
@@ -119,7 +132,7 @@ const experiences = [
     company_name: "Upword",
     icon: upwork,
     iconBg: "white",
-    date: "September 2022 - Present",
+    date: "September 2022 - March 2023",
     points: [
       "Developing and maintaining web applications using React.js and other related technologies.",
       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",

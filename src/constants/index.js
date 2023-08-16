@@ -94,7 +94,7 @@ const experiences = [
     title: "Front-end Tutor",
     company_name: "Hello World",
     icon: helloworld,
-    iconBg: "#092846",
+    iconBg: "#FFFFFF",
     date: "August 2023 - Present",
     points: [
       "Conducted one-on-one lessons with a focus on individual needs.",

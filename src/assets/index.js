@@ -19,6 +19,7 @@ import threejs from "./tech/threejs.svg";
 import upwork from './company/upwork.png';
 import nativecamp from './company/nativecamp.png';
 import itreb from './company/itreb.png';
+import helloworld from './company/helloworld.png';
 
 import resta from './resta.png';
 import travelblog from "./travelblog.png";
@@ -44,6 +45,7 @@ export {
   upwork,
   nativecamp,
   itreb,
+  helloworld,
   resta,
   travelblog,
   photography,

@@ -95,7 +95,7 @@ const experiences = [
     company_name: "Hello World",
     icon: helloworld,
     iconBg: "#FFFFFF",
-    date: "August 2023 - Present",
+    date: "August 2023 - October 2023",
     points: [
       "Conducted one-on-one lessons with a focus on individual needs.",
       "Created environment fosters confident, active student involvement through inquiry and expression.",

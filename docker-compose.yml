@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: ramzi-portfolio
     ports:
-      - "3000:80"
+      - "5000:80"
     restart: unless-stopped
     volumes:
       # Optional: mount nginx config for easy updates

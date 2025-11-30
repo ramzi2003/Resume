@@ -1,5 +1,7 @@
 ---
 import ProjectCard from './ProjectCard.astro';
+const base = import.meta.env.BASE_URL;
+---
 
 const featuredProjects = [
   {
@@ -44,7 +46,7 @@ const featuredProjects = [
       ))}
     </div>
     <div class="projects-cta" data-animation="FadeIn">
-      <a href="/projects" class="btn-primary">View All Projects</a>
+      <a href={`${base}projects`} class="btn-primary">View All Projects</a>
     </div>
   </div>
 </section>

@@ -1,5 +1,6 @@
 ---
 const currentPath = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
 ---
 
 <header 
@@ -13,27 +14,27 @@ const currentPath = Astro.url.pathname;
       <div class="menu-links-w">
         <ul>
           <li>
-            <a href="/" class={`nav-link ${currentPath === '/' ? 'active' : ''}`}>
+            <a href={`${base}`} class={`nav-link ${currentPath === base || currentPath === base.slice(0, -1) ? 'active' : ''}`}>
               <span>Home</span>
             </a>
           </li>
           <li>
-            <a href="/about" class={`nav-link ${currentPath === '/about' ? 'active' : ''}`}>
+            <a href={`${base}about`} class={`nav-link ${currentPath === `${base}about` || currentPath === `${base}about/` ? 'active' : ''}`}>
               <span>About</span>
             </a>
           </li>
           <li>
-            <a href="/experience" class={`nav-link ${currentPath === '/experience' ? 'active' : ''}`}>
+            <a href={`${base}experience`} class={`nav-link ${currentPath === `${base}experience` || currentPath === `${base}experience/` ? 'active' : ''}`}>
               <span>Experience</span>
             </a>
           </li>
           <li>
-            <a href="/projects" class={`nav-link ${currentPath === '/projects' ? 'active' : ''}`}>
+            <a href={`${base}projects`} class={`nav-link ${currentPath === `${base}projects` || currentPath === `${base}projects/` ? 'active' : ''}`}>
               <span>Projects</span>
             </a>
           </li>
           <li>
-            <a href="/contact" class={`nav-link ${currentPath === '/contact' ? 'active' : ''}`}>
+            <a href={`${base}contact`} class={`nav-link ${currentPath === `${base}contact` || currentPath === `${base}contact/` ? 'active' : ''}`}>
               <span>Contact</span>
             </a>
           </li>
@@ -53,27 +54,27 @@ const currentPath = Astro.url.pathname;
   <nav class="mobile-menu-nav">
     <ul>
       <li>
-        <a href="/" class={`mobile-nav-link ${currentPath === '/' ? 'active' : ''}`}>
+        <a href={`${base}`} class={`mobile-nav-link ${currentPath === base || currentPath === base.slice(0, -1) ? 'active' : ''}`}>
           <span>Home</span>
         </a>
       </li>
       <li>
-        <a href="/about" class={`mobile-nav-link ${currentPath === '/about' ? 'active' : ''}`}>
+        <a href={`${base}about`} class={`mobile-nav-link ${currentPath === `${base}about` || currentPath === `${base}about/` ? 'active' : ''}`}>
           <span>About</span>
         </a>
       </li>
       <li>
-        <a href="/experience" class={`mobile-nav-link ${currentPath === '/experience' ? 'active' : ''}`}>
+        <a href={`${base}experience`} class={`mobile-nav-link ${currentPath === `${base}experience` || currentPath === `${base}experience/` ? 'active' : ''}`}>
           <span>Experience</span>
         </a>
       </li>
       <li>
-        <a href="/projects" class={`mobile-nav-link ${currentPath === '/projects' ? 'active' : ''}`}>
+        <a href={`${base}projects`} class={`mobile-nav-link ${currentPath === `${base}projects` || currentPath === `${base}projects/` ? 'active' : ''}`}>
           <span>Projects</span>
         </a>
       </li>
       <li>
-        <a href="/contact" class={`mobile-nav-link ${currentPath === '/contact' ? 'active' : ''}`}>
+        <a href={`${base}contact`} class={`mobile-nav-link ${currentPath === `${base}contact` || currentPath === `${base}contact/` ? 'active' : ''}`}>
           <span>Contact</span>
         </a>
       </li>

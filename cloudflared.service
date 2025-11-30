@@ -1,0 +1,17 @@
+[Unit]
+Description=Cloudflare Tunnel for ramzi-portfolio
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/.cloudflared
+ExecStart=/usr/local/bin/cloudflared tunnel run ramzi-portfolio
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+

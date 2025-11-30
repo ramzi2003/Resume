@@ -40,7 +40,79 @@ const currentPath = Astro.url.pathname;
         </ul>
         <div class="navbar"></div>
       </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
     </nav>
   </div>
 </header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <nav class="mobile-menu-nav">
+    <ul>
+      <li>
+        <a href="/" class={`mobile-nav-link ${currentPath === '/' ? 'active' : ''}`}>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="/about" class={`mobile-nav-link ${currentPath === '/about' ? 'active' : ''}`}>
+          <span>About</span>
+        </a>
+      </li>
+      <li>
+        <a href="/experience" class={`mobile-nav-link ${currentPath === '/experience' ? 'active' : ''}`}>
+          <span>Experience</span>
+        </a>
+      </li>
+      <li>
+        <a href="/projects" class={`mobile-nav-link ${currentPath === '/projects' ? 'active' : ''}`}>
+          <span>Projects</span>
+        </a>
+      </li>
+      <li>
+        <a href="/contact" class={`mobile-nav-link ${currentPath === '/contact' ? 'active' : ''}`}>
+          <span>Contact</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const body = document.body;
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+        body.classList.toggle('menu-open');
+      });
+
+      // Close menu when clicking on a link
+      const menuLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+          menuToggle.classList.remove('active');
+          body.classList.remove('menu-open');
+        });
+      });
+
+      // Close menu when clicking outside
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          mobileMenu.classList.remove('active');
+          menuToggle.classList.remove('active');
+          body.classList.remove('menu-open');
+        }
+      });
+    }
+  });
+</script>
 

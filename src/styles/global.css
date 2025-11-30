@@ -1248,6 +1248,10 @@ main {
    ============================================ */
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
   .grid {
     padding: 0 1rem;
   }
@@ -1304,6 +1308,12 @@ main {
 
   .projects-grid {
     grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  
+  .project-card {
+    width: 100%;
+    max-width: 100%;
   }
 
   .skills-grid {

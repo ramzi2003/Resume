@@ -1,0 +1,55 @@
+---
+---
+
+<div 
+  data-astro-transition-persist="cursor" 
+  class="cursor" 
+  data-component="Cursor"
+>
+  <div class="inner">
+    <div class="circle"></div>
+    <div class="middle-dot"></div>
+    <div class="dots dots-left"></div>
+    <div class="dots dots-right"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cursor = document.querySelector('.cursor');
+    const cursorInner = cursor?.querySelector('.inner');
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.1;
+      cursorY += (mouseY - cursorY) * 0.1;
+      
+      if (cursorInner) {
+        cursorInner.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+      }
+      
+      requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+    // Interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, [data-cursor="draggable"]');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor?.classList.add('hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor?.classList.remove('hover');
+      });
+    });
+  });
+</script>

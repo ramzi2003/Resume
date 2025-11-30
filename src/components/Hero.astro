@@ -1,0 +1,73 @@
+---
+---
+
+<section class="hero" data-chapter="Hero" data-theme="dark" data-animation="Hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-image-wrapper" data-animation="FadeIn">
+        <img src="/profile-photo.png" alt="Ramzi Shodmonbekov" class="hero-photo" />
+      </div>
+      <h1 class="hero-title" data-animation="Title">
+        <span>R a m z i</span>
+        <span class="surname">S h o d m o n b e k o v</span>
+      </h1>
+      <p class="hero-subtitle" data-animation="FadeIn">
+        Full Stack Developer | AI-Assisted Development Specialist
+      </p>
+      <p class="hero-description" data-animation="FadeIn">
+        Building modern web applications with React, Django, and cutting-edge technologies
+      </p>
+      <div class="hero-cta" data-animation="FadeIn">
+        <a href="/projects" class="btn-primary">View My Work</a>
+        <a href="/contact" class="btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Hero animations
+    gsap.from('.hero-title span', {
+      duration: 1,
+      y: 100,
+      opacity: 0,
+      stagger: 0.2,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero-subtitle', {
+      duration: 1,
+      y: 50,
+      opacity: 0,
+      delay: 0.5,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero-description', {
+      duration: 1,
+      y: 50,
+      opacity: 0,
+      delay: 0.7,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero-cta', {
+      duration: 1,
+      y: 50,
+      opacity: 0,
+      delay: 0.9,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero-image-wrapper', {
+      duration: 1,
+      scale: 0.8,
+      opacity: 0,
+      delay: 0.3,
+      ease: 'power3.out'
+    });
+  });
+</script>

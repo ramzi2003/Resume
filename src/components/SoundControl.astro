@@ -1,0 +1,32 @@
+---
+---
+
+<div 
+  data-astro-transition-persist="sound" 
+  class="buttons-container" 
+  data-theme="dark" 
+  data-component="Sound"
+>
+  <div class="buttons-wrapper grid">
+    <div class="buttons-inner">
+      <button id="scroll-top" class="scroll-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" fill="none" viewBox="0 0 10 12">
+          <path fill="white" fill-rule="evenodd" d="M.87 3.982 4.464.386a.757.757 0 0 1 1.07 0L9.13 3.982a.757.757 0 1 1-1.07 1.07L5.757 2.748v8.331a.757.757 0 1 1-1.514 0V2.748L1.94 5.052a.757.757 0 1 1-1.07-1.07" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollTopBtn = document.getElementById('scroll-top');
+    
+    scrollTopBtn?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Always show scroll to top button
+    scrollTopBtn?.classList.add('visible');
+  });
+</script>

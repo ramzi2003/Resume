@@ -1,0 +1,61 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<div class="montfort-menu" data-component="Menu">
+  <div class="grid grid-nav">
+    <nav class="menu-nav">
+      <ul>
+        <li>
+          <a href="/" class={`nav-link ${currentPath === '/' ? 'active' : ''}`}>
+            <div class="svg-container">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
+                <path fill="currentColor" d="M1 4.4a.6.6 0 0 0 0 1.2zm8.424 1.024a.6.6 0 0 0 0-.848L5.606.757a.6.6 0 1 0-.849.849L8.151 5 4.757 8.394a.6.6 0 1 0 .849.849zM1 5.6h8V4.4H1z"/>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span>Home</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="/about" class={`nav-link ${currentPath === '/about' ? 'active' : ''}`}>
+            <div class="svg-container">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
+                <path fill="currentColor" d="M1 4.4a.6.6 0 0 0 0 1.2zm8.424 1.024a.6.6 0 0 0 0-.848L5.606.757a.6.6 0 1 0-.849.849L8.151 5 4.757 8.394a.6.6 0 1 0 .849.849zM1 5.6h8V4.4H1z"/>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span>About</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="/projects" class={`nav-link ${currentPath === '/projects' ? 'active' : ''}`}>
+            <div class="svg-container">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
+                <path fill="currentColor" d="M1 4.4a.6.6 0 0 0 0 1.2zm8.424 1.024a.6.6 0 0 0 0-.848L5.606.757a.6.6 0 1 0-.849.849L8.151 5 4.757 8.394a.6.6 0 1 0 .849.849zM1 5.6h8V4.4H1z"/>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span>Projects</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="/contact" class={`nav-link ${currentPath === '/contact' ? 'active' : ''}`}>
+            <div class="svg-container">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
+                <path fill="currentColor" d="M1 4.4a.6.6 0 0 0 0 1.2zm8.424 1.024a.6.6 0 0 0 0-.848L5.606.757a.6.6 0 1 0-.849.849L8.151 5 4.757 8.394a.6.6 0 1 0 .849.849zM1 5.6h8V4.4H1z"/>
+              </svg>
+            </div>
+            <div class="text-content">
+              <span>Contact</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="overlay"></div>
+</div>

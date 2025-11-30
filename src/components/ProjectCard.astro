@@ -1,0 +1,42 @@
+---
+interface Props {
+  project: {
+    title: string;
+    status: string;
+    description: string;
+    tech: string[];
+    details: string[];
+    github?: string;
+  };
+}
+
+const { project } = Astro.props;
+---
+
+<div class="project-card">
+  <div class="project-header">
+    <h3>{project.title}</h3>
+    <span class={`project-status ${project.status.toLowerCase().replace(/\s+/g, '-')}`}>
+      {project.status}
+    </span>
+  </div>
+  <p class="project-description">{project.description}</p>
+  <ul class="project-details">
+    {project.details.map((detail) => (
+      <li>{detail}</li>
+    ))}
+  </ul>
+  <div class="project-tech">
+    {project.tech.map((tech) => (
+      <span class="tech-tag">{tech}</span>
+    ))}
+  </div>
+  {project.github && (
+    <a href={project.github} target="_blank" rel="noopener noreferrer" class="project-link">
+      View on GitHub
+      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
+        <path fill="currentColor" d="M1 4.4a.6.6 0 0 0 0 1.2zm8.424 1.024a.6.6 0 0 0 0-.848L5.606.757a.6.6 0 1 0-.849.849L8.151 5 4.757 8.394a.6.6 0 1 0 .849.849zM1 5.6h8V4.4H1z"/>
+      </svg>
+    </a>
+  )}
+</div>

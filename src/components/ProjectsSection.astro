@@ -1,0 +1,136 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+const featuredProjects = [
+  {
+    title: 'TV2Bybit Trading Bot',
+    status: 'In Progress',
+    description: 'Full-Stack Cryptocurrency Trading Platform',
+    tech: ['Django', 'React', 'PostgreSQL', 'Redis', 'Docker', 'WebSockets'],
+    details: [
+      'Automated trading system connecting TradingView strategies to Bybit exchange',
+      'RESTful API with 50+ endpoints and WebSocket connections for real-time monitoring'
+    ]
+  },
+  {
+    title: 'ADRIAN - AI Voice Assistant',
+    status: 'In Progress',
+    description: 'Microservices-Based AI Assistant',
+    tech: ['Python', 'FastAPI', 'Redis', 'PostgreSQL', 'Ollama', 'Whisper'],
+    details: [
+      'Microservices architecture with 6 services via Redis Pub/Sub',
+      'Integrated AI models (Ollama Mistral 7B, Google Gemini, OpenAI Whisper)'
+    ]
+  },
+  {
+    title: 'Canteen Management System',
+    status: 'Completed',
+    description: 'Enterprise Multi-Role Management Platform',
+    tech: ['React', 'Material-UI', 'React Router', 'REST APIs'],
+    details: [
+      '4 role-based access levels managing 1000+ daily transactions',
+      'Complete management system with analytics dashboards'
+    ]
+  }
+];
+---
+
+<section class="projects-section" data-chapter="Projects" id="projects">
+  <div class="container">
+    <h2 data-animation="Title">Featured Projects</h2>
+    <div class="projects-grid">
+      {featuredProjects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+    <div class="projects-cta" data-animation="FadeIn">
+      <a href="/projects" class="btn-primary">View All Projects</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  function initProjectsAnimation() {
+    const projectCards = document.querySelectorAll('.projects-section .projects-grid > *');
+    const projectsSection = document.querySelector('.projects-section');
+    
+    if (projectCards.length === 0 || !projectsSection) return;
+    
+    // Kill any existing ScrollTriggers for this section
+    ScrollTrigger.getAll().forEach(trigger => {
+      const triggerElement = trigger.trigger;
+      if (triggerElement && triggerElement.closest('.projects-section')) {
+        trigger.kill();
+      }
+    });
+    
+    // Reset any existing animations
+    gsap.set(projectCards, { clearProps: 'all' });
+    
+    // Set initial state for animation
+    gsap.set(projectCards, { opacity: 0, y: 50 });
+    
+    // Check if section is already in view
+    const rect = projectsSection.getBoundingClientRect();
+    const isInView = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+    
+    if (isInView) {
+      // If already in view, animate immediately
+      gsap.to(projectCards, {
+        duration: 0.8,
+        y: 0,
+        opacity: 1,
+        ease: 'power3.out',
+        onComplete: () => {
+          // Ensure elements are visible after animation
+          gsap.set(projectCards, { opacity: 1, y: 0 });
+        }
+      });
+    } else {
+      // Otherwise, use ScrollTrigger
+      gsap.to(projectCards, {
+        scrollTrigger: {
+          trigger: '.projects-section',
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+          onEnter: () => {
+            // Ensure elements are visible when triggered
+            gsap.set(projectCards, { opacity: 1, y: 0 });
+          }
+        },
+        duration: 0.8,
+        y: 0,
+        opacity: 1,
+        ease: 'power3.out'
+      });
+    }
+  }
+  
+  // Initialize on DOMContentLoaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProjectsAnimation);
+  } else {
+    initProjectsAnimation();
+  }
+  
+  // Re-initialize on view transition (Astro navigation)
+  document.addEventListener('astro:page-load', () => {
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+      initProjectsAnimation();
+    }, 200);
+  });
+  
+  // Also listen for view transition end
+  document.addEventListener('astro:after-swap', () => {
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+      initProjectsAnimation();
+    }, 200);
+  });
+</script>

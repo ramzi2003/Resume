@@ -1,0 +1,90 @@
+---
+import Layout from '@layouts/Layout.astro';
+import ProjectCard from '@components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'TV2Bybit Trading Bot',
+    status: 'In Progress',
+    description: 'Full-Stack Cryptocurrency Trading Platform',
+    tech: ['Django', 'React', 'PostgreSQL', 'Redis', 'Docker', 'WebSockets'],
+    details: [
+      'Automated trading system connecting TradingView strategies to Bybit exchange with real-time execution',
+      'Engineered RESTful API with 50+ endpoints; integrated WebSocket connections for real-time price monitoring',
+      'React dashboard with risk management features (leverage calculation, position sizing, stop-loss)'
+    ],
+    github: 'https://github.com/ramzi2003'
+  },
+  {
+    title: 'ADRIAN - AI Voice Assistant',
+    status: 'In Progress',
+    description: 'Microservices-Based AI Assistant',
+    tech: ['Python', 'FastAPI', 'Redis', 'PostgreSQL', 'Ollama', 'Whisper', 'HuggingFace'],
+    details: [
+      'Microservices architecture with 6 services communicating via Redis Pub/Sub',
+      'Integrated AI models (Ollama Mistral 7B, Google Gemini, OpenAI Whisper) for NLP',
+      'Built voice I/O pipeline with hotword detection, STT, TTS, and intent classification'
+    ],
+    github: 'https://github.com/ramzi2003'
+  },
+  {
+    title: 'Digital Naryn - Business Directory',
+    status: 'Completed',
+    description: 'Full-Stack Mobile Application',
+    tech: ['Django REST', 'React Native', 'Expo', 'PostgreSQL'],
+    details: [
+      'Created mobile business directory application with geolocation and mapping features, supporting 200+ local businesses in Naryn city',
+      'Designed Django REST API with 20+ endpoints and React Native frontend, enabling cross-platform deployment for iOS and Android'
+    ],
+    github: 'https://github.com/ramzi2003'
+  },
+  {
+    title: 'Canteen Management System',
+    status: 'Completed',
+    description: 'Enterprise Multi-Role Management Platform',
+    tech: ['React', 'Material-UI', 'React Router', 'REST APIs'],
+    details: [
+      'Architected enterprise management system with 4 role-based access levels (admin, cashier, reception, accounting), capable of managing 1000+ daily transactions',
+      'Executed client management, menu management, transaction processing, and reporting modules with data visualization charts and analytics dashboards'
+    ],
+    github: 'https://github.com/ramzi2003'
+  },
+  {
+    title: 'Event Manager Application',
+    status: 'Completed',
+    description: 'Full-Stack Event Management System',
+    tech: ['React', 'Redux Toolkit', 'Vite', 'TailwindCSS', 'REST APIs'],
+    details: [
+      'Designed role-based event management system supporting 4 user roles (admin, manager, user, guest) with complete CRUD operations for events, tasks, and user management',
+      'Created React frontend with Redux Toolkit state management and RESTful API backend, handling 100+ concurrent users'
+    ],
+    github: 'https://github.com/ramzi2003'
+  },
+  {
+    title: 'OSINT Reconnaissance Framework',
+    status: 'Completed',
+    description: 'Web-Based Intelligence Gathering Tool',
+    tech: ['Python', 'Flask', 'HTML5', 'JavaScript', 'DigitalOcean', 'Nginx'],
+    details: [
+      'Engineered web application applying 3 fingerprinting techniques (Canvas, WebGL, Audio) for device identification and geolocation data collection',
+      'Deployed on DigitalOcean cloud infrastructure with automated service management using systemd and Nginx, achieving 99%+ uptime'
+    ],
+    github: 'https://github.com/ramzi2003'
+  }
+];
+---
+
+<Layout title="Projects - Ramzi Shodmonbekov">
+  <section class="projects-page">
+    <div class="container">
+      <h1 data-animation="Title">My Projects</h1>
+      <p class="subtitle">A collection of my work showcasing full-stack development, AI integration, and modern web technologies</p>
+      
+      <div class="projects-grid">
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

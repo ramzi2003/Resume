@@ -1,0 +1,46 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header 
+  id="header" 
+  data-theme="light" 
+  data-component="Header"
+  data-astro-transition-persist="header"
+>
+  <div class="grid container-menu">
+    <nav class="nav-container">
+      <div class="menu-links-w">
+        <ul>
+          <li>
+            <a href="/" class={`nav-link ${currentPath === '/' ? 'active' : ''}`}>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="/about" class={`nav-link ${currentPath === '/about' ? 'active' : ''}`}>
+              <span>About</span>
+            </a>
+          </li>
+          <li>
+            <a href="/experience" class={`nav-link ${currentPath === '/experience' ? 'active' : ''}`}>
+              <span>Experience</span>
+            </a>
+          </li>
+          <li>
+            <a href="/projects" class={`nav-link ${currentPath === '/projects' ? 'active' : ''}`}>
+              <span>Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class={`nav-link ${currentPath === '/contact' ? 'active' : ''}`}>
+              <span>Contact</span>
+            </a>
+          </li>
+        </ul>
+        <div class="navbar"></div>
+      </div>
+    </nav>
+  </div>
+</header>
+

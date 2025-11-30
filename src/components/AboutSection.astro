@@ -1,0 +1,62 @@
+---
+---
+
+<section class="about-section" data-chapter="About" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <h2 data-animation="Title">About Me</h2>
+      <div class="about-content">
+        <div class="text-block" data-animation="TextBlock">
+          <p>
+            Senior Computer Science student with hands-on full-stack development experience. 
+            Proficient in AI-assisted development workflows, React, Django, and modern web technologies.
+          </p>
+          <p>
+            Strong problem-solving and communication skills with proven ability to deliver projects 
+            in collaborative environments. Developed scalable applications capable of handling 500+ users 
+            and 1000+ daily transactions, demonstrating production-ready architecture and best practices.
+          </p>
+        </div>
+        <a href="/about" class="link-block" data-animation="FadeIn">
+          <span>Learn More</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
+            <path fill="currentColor" d="M1 4.4a.6.6 0 0 0 0 1.2zm8.424 1.024a.6.6 0 0 0 0-.848L5.606.757a.6.6 0 1 0-.849.849L8.151 5 4.757 8.394a.6.6 0 1 0 .849.849zM1 5.6h8V4.4H1z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    gsap.from('.about-section h2', {
+      scrollTrigger: {
+        trigger: '.about-section',
+        start: 'top 80%'
+      },
+      duration: 1,
+      y: 50,
+      opacity: 0,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.about-content', {
+      scrollTrigger: {
+        trigger: '.about-section',
+        start: 'top 80%'
+      },
+      duration: 1,
+      y: 50,
+      opacity: 0,
+      delay: 0.2,
+      ease: 'power3.out'
+    });
+
+  });
+</script>

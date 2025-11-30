@@ -1,0 +1,115 @@
+---
+---
+
+<div 
+  id="canvas-wrapper" 
+  data-astro-transition-persist="webgl" 
+  aria-hidden="true"
+>
+  <canvas id="webgl-canvas"></canvas>
+</div>
+
+<script>
+  import * as THREE from 'three';
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('webgl-canvas');
+    const canvasWrapper = document.getElementById('canvas-wrapper');
+    if (!canvas || !(canvas instanceof HTMLCanvasElement) || !canvasWrapper) return;
+    
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Initially hide the canvas (off screen to the right)
+    gsap.set(canvasWrapper, { opacity: 0, x: '100%' });
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: true
+    });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Create abstract geometric scene
+    const geometry = new THREE.TorusGeometry(1, 0.3, 16, 100);
+    const material = new THREE.MeshStandardMaterial({ 
+      color: 0x2d628c,
+      metalness: 0.7,
+      roughness: 0.3
+    });
+    const torus = new THREE.Mesh(geometry, material);
+    scene.add(torus);
+
+    // Add particles
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 1000;
+    const posArray = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 10;
+    }
+
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 0.02,
+      color: 0x2d628c
+    });
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+
+    camera.position.z = 5;
+
+    const animate = () => {
+      requestAnimationFrame(animate);
+      torus.rotation.x += 0.005;
+      torus.rotation.y += 0.005;
+      particlesMesh.rotation.y += 0.001;
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Scroll animation - show and animate from right to center when scrolled 50vh
+    ScrollTrigger.create({
+      trigger: 'body',
+      start: 'top top',
+      end: () => `+=${window.innerHeight * 0.5}`,
+      scrub: true,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        gsap.to(canvasWrapper, {
+          opacity: progress,
+          x: `${(1 - progress) * 100}%`,
+          duration: 0.1,
+          ease: 'none'
+        });
+      }
+    });
+  });
+</script>

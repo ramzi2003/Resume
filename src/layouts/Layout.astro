@@ -1,0 +1,60 @@
+---
+import Header from '@components/Header.astro';
+import Cursor from '@components/Cursor.astro';
+import WebGLScene from '@components/WebGLScene.astro';
+import SoundControl from '@components/SoundControl.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Ramzi Shodmonbekov - Full Stack Developer',
+  description = 'Senior Computer Science student with hands-on full-stack development experience. Proficient in AI-assisted development workflows, React, Django, and modern web technologies.'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-astro-transition-scope="astro-transition">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Astro v5.2.6" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="theme-color" content="#2d628c" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{title}</title>
+    <meta name="astro-view-transitions-enabled" content="true" />
+    <meta name="astro-view-transitions-fallback" content="swap" />
+  </head>
+  <body>
+    <Cursor />
+    <Header />
+    <WebGLScene />
+    <SoundControl />
+    <main>
+      <slot />
+    </main>
+    <script>
+      // Body fade-in on load
+      document.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.add('loaded');
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  body {
+    opacity: 0;
+    transition: opacity 0.4s linear;
+  }
+
+  body.loaded {
+    opacity: 1;
+  }
+</style>

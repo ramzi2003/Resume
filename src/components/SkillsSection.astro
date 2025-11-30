@@ -1,0 +1,48 @@
+---
+const skills = {
+  'Languages': ['Python', 'JavaScript', 'TypeScript', 'Java', 'C/C++'],
+  'Frontend': ['React', 'HTML5', 'CSS3', 'TailwindCSS', 'Redux', 'Vite'],
+  'Backend': ['Node.js', 'Django', 'Django REST Framework', 'FastAPI', 'Express.js'],
+  'Databases': ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis'],
+  'Tools & Others': ['Git', 'Docker', 'REST APIs', 'WebSockets', 'JWT', 'Nginx', 'Linux', 'AWS', 'AI-Assisted Development', 'Agile Methodologies']
+};
+---
+
+<section class="skills-section" data-chapter="Skills" id="skills">
+  <div class="container">
+    <h2 data-animation="Title">Skills & Technologies</h2>
+    <div class="skills-grid">
+      {Object.entries(skills).map(([category, items]) => (
+        <div class="skill-category" data-animation="FadeIn">
+          <h3>{category}</h3>
+          <div class="skill-tags">
+            {items.map((skill) => (
+              <span class="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    gsap.from('.skill-category', {
+      scrollTrigger: {
+        trigger: '.skills-section',
+        start: 'top 80%'
+      },
+      duration: 0.8,
+      y: 50,
+      opacity: 0,
+      stagger: 0.1,
+      ease: 'power3.out'
+    });
+  });
+</script>
